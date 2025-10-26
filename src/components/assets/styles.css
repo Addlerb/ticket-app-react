@@ -1,0 +1,60 @@
+/* src/assets/styles.css */
+:root {
+    --open: #4CAF50;
+    --in-progress: #FFC107;
+    --closed: #9E9E9E;
+}
+
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px 0;
+}
+
+.hero {
+    position: relative;
+    background: url('./wave.svg') no-repeat bottom;
+    /* Changed from /assets/wave.svg */
+    background-size: cover;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.circle {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: url('./circle.svg');
+    /* Changed from /assets/circle.svg */
+    z-index: 10;
+}
+
+button:focus,
+a:focus {
+    outline: 2px solid #0099ff;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 8px;
+    }
+
+    nav {
+        display: none;
+    }
+
+    /* Collapsible nav */
+}
+
+@media (min-width: 769px) {
+    nav {
+        display: flex;
+    }
+}
