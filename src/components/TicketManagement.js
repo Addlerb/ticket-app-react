@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
-import "./assets/styles.css";
+import "../assets/styles.css";
 
 function TicketManagement() {
   const [tickets, setTickets] = useState([]);
@@ -11,7 +10,6 @@ function TicketManagement() {
     description: "",
     status: "open",
   });
-  const navigate = useNavigate();
 
   useEffect(() => {
     axios

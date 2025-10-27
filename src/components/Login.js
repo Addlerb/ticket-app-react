@@ -1,50 +1,63 @@
-import { useForm } from "react-hook-form";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import axios from "axios";
+import "../assets/styles.css";
 
-function Signup({ setAuth }) {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+function Login({ setAuth }) {
+  const [credentials, setCredentials] = useState({ email: "", password: "" });
   const navigate = useNavigate();
 
-  const onSubmit = async (data) => {
-    try {
-      const response = { data: { token: "xyz", user: data.email } };
-      localStorage.setItem("ticketapp_session", JSON.stringify(response.data));
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (
+      credentials.email === "addlerb@hng.com" &&
+      credentials.password === "password123"
+    ) {
+      localStorage.setItem("ticketapp_session", "true");
       setAuth(true);
-      toast.success("Signup successful!");
+      toast.success("Logged in successfully!");
       navigate("/dashboard");
-    } catch (error) {
-      toast.error("Failed to sign up. Please retry.");
+    } else {
+      toast.error("Invalid credentials!");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="card">
-      <h2>Signup</h2>
-      <input
-        {...register("email", {
-          required: "Email is required",
-          pattern: { value: /^\S+@\S+\.\S+$/, message: "Invalid email" },
-        })}
-        placeholder="Email"
-      />
-      {errors.email && <span>{errors.email.message}</span>}
-      <input
-        type="password"
-        {...register("password", {
-          required: "Password is required",
-          minLength: { value: 6, message: "Minimum 6 characters" },
-        })}
-        placeholder="Password"
-      />
-      {errors.password && <span>{errors.password.message}</span>}
-      <button type="submit">Signup</button>
-    </form>
+    <div className="hero">
+      <div className="login-container">
+        <div className="login-card">
+          <h2>Welcome to Ticket Master</h2>
+          <p className="login-subtitle">Unlock your ticket management power</p>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="email"
+              placeholder="Email Address"
+              value={credentials.email}
+              onChange={(e) =>
+                setCredentials({ ...credentials, email: e.target.value })
+              }
+              required
+              className="input-field"
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={credentials.password}
+              onChange={(e) =>
+                setCredentials({ ...credentials, password: e.target.value })
+              }
+              required
+              className="input-field"
+            />
+            <button type="submit" className="login-btn">
+              Please Login
+            </button>
+          </form>
+        </div>
+      </div>
+      <div className="wave-section"></div>
+    </div>
   );
 }
-export default Signup;
+
+export default Login;

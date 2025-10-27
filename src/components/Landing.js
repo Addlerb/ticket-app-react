@@ -1,25 +1,42 @@
 import { useNavigate } from "react-router-dom";
-import Footer from "./Footer";
-import "./assets/styles.css";
+import "../assets/styles.css";
 
 function Landing() {
   const navigate = useNavigate();
 
+  const handleLoginClick = () => {
+    navigate("/auth/login");
+  };
+
+  const handleGetStartedClick = () => {
+    navigate("/auth/signup");
+  };
+
   return (
-    <div>
-      <section className="hero">
-        <div className="circle" style={{ top: "20px", right: "20px" }}></div>
-        <h1>TicketMaster</h1>
-        <p>Manage your tickets with ease!</p>
-        <button onClick={() => navigate("/auth/login")}>Login</button>
-        <button onClick={() => navigate("/auth/signup")}>Get Started</button>
-      </section>
-      <section className="card">
-        <h2>Features</h2>
-        <p>Track, manage, and resolve tickets seamlessly.</p>
-      </section>
-      <Footer />
+    <div className="hero">
+      <div className="hero-content">
+        <div className="decorative-circle left-circle"></div>
+        <div className="content-wrapper">
+          <h1>Ticket Master</h1>
+          <p className="description">
+            Manage your tickets effortlessly with our sleek and powerful app!
+          </p>
+          <div className="cta-buttons">
+            <button onClick={handleLoginClick} className="login-btn">
+              Login
+            </button>
+            <button onClick={handleGetStartedClick} className="get-started-btn">
+              Get Started
+            </button>
+          </div>
+        </div>
+        <div className="decorative-circle right-circle"></div>
+      </div>
+      <div className="wave-section">
+        <img src="/assets/wave.svg" alt="Wavy background" className="wave" />
+      </div>
     </div>
   );
 }
+
 export default Landing;

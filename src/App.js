@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Landing from "./components/Landing";
 import Login from "./components/Login";
@@ -15,17 +15,16 @@ function App() {
   );
 
   const ProtectedRoute = ({ children }) => {
-    if (!isAuthenticated) {
-      toast.error("Your session has expired — please log in again.");
-      return <Navigate to="/auth/login" />;
-    }
+    if (!isAuthenticated) return <Navigate to="/auth/login" />;
     return children;
   };
 
   return (
     <BrowserRouter>
       <ToastContainer />
-      <div className="container">
+      <div className="hero">
+        {" "}
+        {/* Add this to apply background globally */}
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route
