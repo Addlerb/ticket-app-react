@@ -13,8 +13,7 @@ function Signup({ setAuth }) {
 
   const onSubmit = async (data) => {
     try {
-      // Simulate API call
-      const response = { data: { token: "xyz", user: data.email } }; // Replace with axios.post('http://localhost:3000/signup', data)
+      const response = { data: { token: "xyz", user: data.email } };
       localStorage.setItem("ticketapp_session", JSON.stringify(response.data));
       setAuth(true);
       toast.success("Signup successful!");

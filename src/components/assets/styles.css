@@ -1,4 +1,3 @@
-/* src/assets/styles.css */
 :root {
     --open: #4CAF50;
     --in-progress: #FFC107;
@@ -21,7 +20,6 @@
 .hero {
     position: relative;
     background: url('./wave.svg') no-repeat bottom;
-    /* Changed from /assets/wave.svg */
     background-size: cover;
     padding: 60px 0;
     text-align: center;
@@ -32,7 +30,6 @@
     width: 100px;
     height: 100px;
     background: url('./circle.svg');
-    /* Changed from /assets/circle.svg */
     z-index: 10;
 }
 
@@ -50,7 +47,6 @@ a:focus {
         display: none;
     }
 
-    /* Collapsible nav */
 }
 
 @media (min-width: 769px) {
