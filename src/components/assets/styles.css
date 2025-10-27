@@ -12,7 +12,7 @@ body {
 .hero {
   position: relative;
   min-height: 100vh;
-  background-color: #4facfe; /* Solid color as base */
+  background-color: #4facfe; 
   display: flex;
   flex-direction: column;
   justify-content: center;
